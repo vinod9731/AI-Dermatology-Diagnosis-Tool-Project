@@ -271,7 +271,8 @@ project/
 ```
 
 ---
-# Images 
+# Model
+https://drive.google.com/drive/folders/1SRScvrdh1vgNualFMu919xftAbIwL730?usp=drive_link
 
 
 # 🧑‍🤝‍🧑 Authors
