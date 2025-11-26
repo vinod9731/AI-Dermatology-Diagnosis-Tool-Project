@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermDetect - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">DermDetect</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Analysis History</h1>
+        <p>Review your past image analyses and conversations.</p>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-container">
+            {% for item in history %}
+            <div class="history-item" id="history-{{ item.id }}">
+                <div class="history-image-container">
+                    <img src="data:image/jpeg;base64,{{ item.image_data }}" alt="Analyzed skin image">
+                </div>
+                <div class="history-content">
+                    <h3>{{ item.disease_name }}</h3>
+                    <p><strong>Query:</strong> {{ item.query }}</p>
+                    <div class="response-text"><strong>Response:</strong> {{ item.response }}</div>
+                    <button class="delete-btn" data-id="{{ item.id }}">&times;</button>
+                </div>
+            </div>
+            {% else %}
+            <p>You have no saved history yet. Go to the <a href="/analysis">Analysis Tool</a> to get started.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* --- General & Variables --- */
+:root {
+    --primary-color: #3a7bd5;
+    --secondary-color: #00d2ff;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #4a4a4a;
+    --heading-color: #333;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* --- Navigation --- */
+nav { background-color: var(--card-background); box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+nav .logo { font-size: 1.8rem; font-weight: 700; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; }
+nav a { text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
+nav a:hover, nav a.active { color: var(--primary-color); }
+
+/* --- Hero & Slider --- */
+.hero { position: relative; height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.slide { display: none; width: 100%; height: 100%; }
+.slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(60%); }
+.fade { animation-name: fade; animation-duration: 1.5s; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+.hero-content { position: relative; z-index: 2; background-color: rgba(0, 0, 0, 0.4); padding: 2rem; border-radius: 10px; }
+.hero-content h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+.hero-content p { font-size: 1.1rem; }
+
+/* --- Info Section --- */
+.info-section { padding: 3rem 0; background-color: #fff; text-align: center; }
+.info-section h2 { font-size: 2rem; color: var(--heading-color); margin-bottom: 1rem; }
+
+/* --- Main Interaction Card --- */
+main { padding: 3rem 0; }
+.interaction-card {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.upload-section h2 { text-align: center; margin-top: 0; color: var(--heading-color); font-size: 1.6rem; }
+
+.upload-options { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+.option-btn { display: flex; align-items: center; gap: 8px; padding: 12px 20px; font-size: 1rem; border-radius: 8px; border: 1px solid #ddd; background-color: #fff; cursor: pointer; transition: all 0.3s; }
+.option-btn:hover { background-color: #f5f5f5; border-color: var(--primary-color); }
+.option-btn svg { width: 24px; height: 24px; fill: #555; }
+
+.preview-area { border: 2px dashed #d0d0d0; border-radius: 10px; min-height: 250px; display: flex; justify-content: center; align-items: center; position: relative; margin-bottom: 1.5rem; }
+#imagePreview, #videoElement { max-width: 100%; max-height: 350px; border-radius: 8px; display: block; }
+
+#cameraView { position: relative; }
+#captureBtn { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background-color: rgba(220, 53, 69, 0.9); color: white; border: none; border-radius: 20px; cursor: pointer; }
+
+#predictBtn { display: block; width: 100%; padding: 1rem; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+#predictBtn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.result-box { margin-top: 1rem; text-align: center; min-height: 1.5em; }
+
+/* --- Chatbot Section --- */
+.chatbot-section { border-top: 1px solid #eee; margin-top: 2rem; padding-top: 2rem; }
+.language-selector { margin-bottom: 1rem; text-align: right; }
+#chatbox { height: 300px; overflow-y: auto; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; background-color: #f9f9f9; }
+.chat-message { padding: 10px 15px; border-radius: 18px; margin-bottom: 10px; max-width: 85%; line-height: 1.5; }
+.user-msg { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); color: white; margin-left: auto; border-bottom-right-radius: 4px; }
+.assistant-msg { background-color: #e9ecef; color: var(--text-color); margin-right: auto; border-bottom-left-radius: 4px; }
+.input-area { display: flex; gap: 10px; }
+#userInput { flex-grow: 1; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+#sendBtn { width: 50px; height: 50px; padding: 0; margin: 0; border-radius: 8px; background-color: var(--primary-color); border:none; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+#sendBtn svg { fill: white; }
+
+/* --- Dashboard (Compact) --- */
+.page-header { text-align: center; padding: 3rem; background-color: #fff; border-bottom: 1px solid #eee; }
+.dashboard-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0;}
+@media (min-width: 1024px) { .dashboard-container { grid-template-columns: 1fr 1fr; } }
+.history-item { display: flex; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); overflow: hidden; height: 200px; }
+.history-image-container { width: 200px; flex-shrink: 0; }
+.history-image-container img { width: 100%; height: 100%; object-fit: cover; }
+.history-content { padding: 1rem 1.5rem; flex-grow: 1; position: relative; overflow: hidden; }
+.history-content h3 { margin-top: 0; color: var(--primary-color); }
+.history-content .response-text { max-height: 60px; overflow: hidden; text-overflow: ellipsis; color: #555; }
+.delete-btn { background-color: #dc3545; color: white; border: none; border-radius: 5px; position: absolute; top: 1rem; right: 1.5rem; padding: 5px 10px; cursor: pointer; font-size: 1.2rem; line-height: 1; }
+
+
+
+
+
+
+
+
+

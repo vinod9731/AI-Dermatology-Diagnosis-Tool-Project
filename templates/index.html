@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermDetect - AI Skin Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">DermDetect</div>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="slider-container">
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/slide1.png') }}" alt="Skin care">
+            </div>
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Healthy skin">
+            </div>
+            <div class="slide fade">
+                <img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="Dermatology">
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Advanced AI Skin Analysis</h1>
+            <p>Leverage AI to get instant insights into your skin concerns.</p>
+        </div>
+    </header>
+
+    <section class="info-section">
+        <div class="container">
+            <h2>Understanding Your Skin</h2>
+            <p>Your skin is your body's largest organ and your first line of defense. Understanding common conditions is the first step towards better health. This tool provides preliminary analysis, but always consult a certified dermatologist for a professional diagnosis.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Unified Interaction Card -->
+        <div class="card interaction-card">
+            
+            <!-- Upload / Camera Section -->
+            <div class="upload-section">
+                <h2>Get Started with an Image</h2>
+                <div class="upload-options">
+                    <button id="uploadFileBtn" class="option-btn">
+                        <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg> Upload File
+                    </button>
+                    <button id="useCameraBtn" class="option-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg> Use Camera
+                    </button>
+                </div>
+
+                <div class="preview-area">
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <img id="imagePreview" src="#" alt="Your image" style="display:none;">
+                    <div id="cameraView" style="display:none;">
+                        <video id="videoElement" autoplay></video>
+                        <button id="captureBtn">Capture Photo</button>
+                    </div>
+                </div>
+
+                <button id="predictBtn" style="display:none;">Analyze Image</button>
+                <div id="result" class="result-box"></div>
+            </div>
+
+            <!-- Chatbot Section (NOW ALWAYS VISIBLE) -->
+            <div class="chatbot-section">
+                <h2>Ask the AI Assistant</h2>
+                <div class="language-selector">
+                    <label for="language">Language:</label>
+                    <select id="language">
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Kannada">Kannada</option>
+                    </select>
+                </div>
+                <div id="chatbox">
+                    <!-- Default welcome message -->
+                    <div class="chat-message assistant-msg">
+                        Hello! Ask me any general questions about skin health, or upload an image to get started.
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="Ask about a skin condition...">
+                    <button id="sendBtn" aria-label="Send Message">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>
